@@ -1,0 +1,27 @@
+#!name=🔨 CrackingApps: 📱 iOS
+#!desc=Scripts for cracking apps on iOS.
+#!author=c3b2a7
+#!system=ios
+#!homepage=https://github.com/c3b2a7/Scripts
+#!category=🔨 CrackingApps
+
+[Script]
+# WPS Office 解锁部分功能
+Wps.js = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/[a-z-]*account\.wps\.c(n|om)(:\d+|)\/api\/users,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Wps.js
+# CamScanner 解锁部分高级特权
+CamScanner.js = type=http-response,requires-body=1,max-size=0,pattern=https:\/\/(api|api-cs)\.intsig\.net\/purchase\/cs\/query_property\?,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/CamScanner.js
+# 百度网盘 解锁在线视频倍率/清晰度
+BaiduCloud.js = type=http-response,requires-body=1,max-size=0,pattern=https:\/\/pan\.baidu\.com\/rest\/\d\.\d\/membership\/user,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/BaiduCloud.js
+# MIX 解锁特权 (需恢复购买)
+MIX.js = type=http-response,requires-body=1,max-size=0,pattern=https?:\/\/bmall\.camera360\.com\/api\/mix\/recovery,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/MIX.js
+# NiChi 解锁素材包
+NiChi.js = type=http-response,requires-body=1,max-size=524288,pattern=https?:\/\/m(p|ini-hk)\.bybutter\.com\/mood\/(official-templates|privileges),script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/NiChi.js
+# VSCO & 1Blocker 解锁特权
+vsco.req.js = type=http-request,pattern=^https?:\/\/api\.revenuecat\.com\/v\d\/subscribers\/,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/vsco.js
+vsco.resp.js = type=http-response,requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/vsco.js,pattern=^https?:\/\/api\.revenuecat\.com\/v\d\/subscribers\/
+# Netflix ratings
+nf_rating.req.js = type=http-request,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
+nf_rating.resp.js = type=http-response,requires-body=1,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
+
+[MITM]
+hostname = %APPEND% *account.wps.cn, *account.wps.com, ap*.intsig.net, pan.baidu.com, bmall.camera360.com, m*.bybutter.com, api.revenuecat.com, ios-*.prod.ftl.netflix.com, ios.prod.ftl.netflix.com
