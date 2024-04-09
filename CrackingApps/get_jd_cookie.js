@@ -1,4 +1,8 @@
-var DeleteCookie = false; //是否清除所有Cookie, true则开启.
+const args = formatArgument(typeof $argument == "string" && $argument || '');
+
+var debug = Number(args.debug); // 调试模式, 1: 开启; 0: 关闭
+
+var DeleteCookie = Number(args.deleteCookie); //是否清除所有Cookie, 1: 开启; 0: 关闭.
 
 var out = 0; //接口超时退出, 用于可能发生的网络不稳定, 0则关闭. 如QX日志出现大量"JS Context timeout"后脚本中断时, 建议填写6000
 
@@ -111,6 +115,10 @@ function GetCookie() {
     } else if (!req.headers) {
         throw new Error("写入Cookie失败, 请检查匹配URL或配置内脚本类型 ⚠️");
     }
+}
+
+function formatArgument(s) {
+    return Object.fromEntries(s.split('&').map(item => item.split('=')))
 }
 
 function nobyda() {
