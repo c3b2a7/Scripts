@@ -1,0 +1,25 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "🚀🚀🚀🚀🚀🚀",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/c3b2a7/scripts.git"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "rollup --config --configDebug"
+  },
+  "browserslist": [
+    "iOS >= 15"
+  ],
+  "author": "c3b2a7",
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.9.6"
+  }
+}
