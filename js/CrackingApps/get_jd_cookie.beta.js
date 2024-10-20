@@ -107,10 +107,10 @@ function HTTP(defaultOptions = {
                 })
                     .then(response => response.json())
                     .then(response => resolve({
-                    statusCode: response.status,
-                    headers: response.headers,
-                    body: response.data,
-                })).catch(reject);
+                        statusCode: response.status,
+                        headers: response.headers,
+                        body: response.data,
+                    })).catch(reject);
             });
         }
 

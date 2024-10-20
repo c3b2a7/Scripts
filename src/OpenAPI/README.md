@@ -97,8 +97,6 @@ $.http.put({
 - timeout
 - events
 
-
-
 ```javascript
 $.http = HTTP({
   baseURL: "https://www.baidu.com",
@@ -111,7 +109,6 @@ $.http = HTTP({
   }
 });
 ```
-
 
 ```javascript
 // 设置默认的baseURL为api.github.com，并设置鉴权token
@@ -143,7 +140,8 @@ $.done();
 
 #### 1. QX & Loon & Surge
 
-整个API对象共用一个`cache`，所以`$.write("VALUE", "KEY")`其实只是把值保存到`cache`中。然后`cache`会被以`name`属性作为key保存到`$prefs`或者`$persistentStore`中。这形成了每个脚本独自的缓存空间，避免key碰撞的情况产生。
+整个API对象共用一个`cache`，所以`$.write("VALUE", "KEY")`其实只是把值保存到`cache`中。然后`cache`会被以`name`属性作为key保存到
+`$prefs`或者`$persistentStore`中。这形成了每个脚本独自的缓存空间，避免key碰撞的情况产生。
 
 ```javascript
 const $1 = API("APP1");

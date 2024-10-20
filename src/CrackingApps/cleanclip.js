@@ -25,12 +25,12 @@ let deactivate = () => {
         activation_limit: 2,
         activation_usage: 0,
         error: null,
-      });
-      $done({
+    });
+    $done({
         response: {
-          body,
+            body,
         },
-      });
+    });
 };
 
 activate();
