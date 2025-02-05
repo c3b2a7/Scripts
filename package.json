@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "test": "rollup --config --configDebug"
+    "build-beta": "rollup -c --configBeta"
   },
   "browserslist": [
     "iOS >= 15"

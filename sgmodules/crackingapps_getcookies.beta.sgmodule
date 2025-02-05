@@ -8,7 +8,7 @@
 
 [Script]
 # 京东Cookie
-京东签到Cookie = type=http-request,requires-body=1,pattern=^https:\/\/(api\.m|me-api|ms\.jr)\.jd\.com\/(client\.action|api)\?(appid=.+)?functionId=(queryJDUserInfo),script-path=https://raw.githubusercontent.com/c3b2a7/Scripts/main/dist/utils/get_jd_cookie.beta.js,debug={{{Debug模式}}},argument="deleteCookie={{{清空Cookie}}}&debug={{{Debug模式}}}
+京东签到Cookie = type=http-request,requires-body=1,pattern=^https:\/\/(api\.m|me-api|ms\.jr)\.jd\.com\/(client\.action|api)\?(appid=.+)?functionId=(queryJDUserInfo),script-path=https://raw.githubusercontent.com/c3b2a7/Scripts/main/dist/utils/get_jd_cookie.beta.js,debug={{{Debug模式}}},argument=deleteCookie={{{清空Cookie}}}&debug={{{Debug模式}}}
 
 [MITM]
 hostname = %APPEND% api.m.jd.com, ms.jr.jd.com, me-api.jd.com

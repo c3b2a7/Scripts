@@ -425,8 +425,8 @@ function GetCookie() {
                 const ck = cookiesItems.join('');
                 ck.split(/pt_key=(.+?);/)[1];
                 const pp = ck.split(/pt_pin=(.+?);/)[1];
-                $.write(ck, pp);
-                $.notify(`用户名: ${pp}`, ``, `写入京东 [账号${pp}] Cookie${write ? `成功 🎉` : `失败 ‼️`}`);
+                const write = $.write(ck, pp);
+                $.notify(`京东 Cookie 获取`, ``, `写入京东 [账号${pp}] Cookie${write ? `成功 🎉` : `失败 ‼️`}`);
             } else {
                 $.log(cookiesItems);
                 throw new Error("写入Cookie失败, 关键值缺失，可能原因: 非网页获取 ‼️");

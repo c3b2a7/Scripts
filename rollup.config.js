@@ -1,9 +1,9 @@
 import defaultConfig from './rollup.default.config.js';
-import debugConfig from './rollup.debug.config.js';
+import betaConfig from './rollup.beta.config.js';
 
 export default commandLineArgs => {
-    if (commandLineArgs.configDebug === true) {
-        return debugConfig;
+    if (commandLineArgs.configBeta === true) {
+        return betaConfig;
     }
     return defaultConfig;
 };
