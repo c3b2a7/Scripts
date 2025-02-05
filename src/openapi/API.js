@@ -227,8 +227,8 @@ function API(name = "untitled", debug = false) {
         // store cache
         persistCache() {
             const data = JSON.stringify(this.cache, null, 2);
-            if (isQX) $prefs.setValueForKey(data, this.name);
-            if (isLoon || isSurge) $persistentStore.write(data, this.name);
+            if (isQX) return $prefs.setValueForKey(data, this.name);
+            if (isLoon || isSurge) return $persistentStore.write(data, this.name);
             if (isNode) {
                 this.node.fs.writeFileSync(
                     `${this.name}.json`,
@@ -245,6 +245,7 @@ function API(name = "untitled", debug = false) {
                     (err) => console.log(err)
                 );
             }
+            return true
         }
 
         write(data, key) {
@@ -263,7 +264,7 @@ function API(name = "untitled", debug = false) {
             } else {
                 this.cache[key] = data;
             }
-            this.persistCache();
+            return this.persistCache();
         }
 
         read(key) {
@@ -300,7 +301,7 @@ function API(name = "untitled", debug = false) {
             } else {
                 delete this.cache[key];
             }
-            this.persistCache();
+            return this.persistCache();
         }
 
         // notification

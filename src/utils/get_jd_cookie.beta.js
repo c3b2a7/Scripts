@@ -24,7 +24,7 @@ async function runs() {
 
 function DeleteCookie() {
     const write = $.delete(`#${JDCookieKey}`);
-    throw new Error(`Cookie清除${write ? `成功` : `失败`}, 请手动关闭脚本内"DeleteCookie"选项`);
+    $.info(`京东 Cookie 清除${write ? `成功` : `失败`}, 请手动关闭脚本内"DeleteCookie"选项`)
 }
 
 function GetCookie() {
@@ -38,7 +38,7 @@ function GetCookie() {
                 const pk = ck.split(/pt_key=(.+?);/)[1];
                 const pp = ck.split(/pt_pin=(.+?);/)[1];
                 const write = $.write(ck, pp)
-                $.notify(`京东 Cookie 获取`, ``, `写入京东 [账号${pp}] Cookie${write ? `成功 🎉` : `失败 ‼️`}`)
+                $.notify(`京东 Cookie`, ``, `写入京东账号[${pp}] Cookie${write ? `成功 🎉` : `失败 ‼️`}`)
             } else {
                 $.log(cookiesItems)
                 throw new Error("写入Cookie失败, 关键值缺失，可能原因: 非网页获取 ‼️");
