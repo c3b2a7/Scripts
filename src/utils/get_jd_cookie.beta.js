@@ -9,22 +9,25 @@ $.debug = Number(args.debug) || ($.read('Debug') === 'true'); //Debug模式, 1: 
 $.DeleteCookie = Number(args.deleteCookie) || ($.read('DeleteCookie') === 'true'); //是否清除所有Cookie, 1: 开启; 0: 关闭.
 
 runs()
-    .catch(e => $.error(e.error || e.message || e))
+    .catch(e => {
+        $.error(e.error || e.message || e);
+        $.notify(`京东 Cookie`, ``, e.message || JSON.stringify(e));
+    })
     .finally(() => $.done());
 
 async function runs() {
     if ($.DeleteCookie) {
         DeleteCookie();
     } else if ($.env.isRequest) {
-        GetCookie()
+        GetCookie();
     } else {
-        throw new Error('脚本终止, 未获取Cookie ‼️')
+        throw new Error('脚本终止, 未获取Cookie ‼️');
     }
 }
 
 function DeleteCookie() {
     const write = $.delete(`#${JDCookieKey}`);
-    $.info(`京东 Cookie 清除${write ? `成功` : `失败`}, 请手动关闭脚本内"DeleteCookie"选项`)
+    $.info(`京东 Cookie 清除${write ? `成功` : `失败`}, 请手动关闭脚本内"DeleteCookie"选项`);
 }
 
 function GetCookie() {
@@ -37,8 +40,8 @@ function GetCookie() {
                 const ck = cookiesItems.join('');
                 const pk = ck.split(/pt_key=(.+?);/)[1];
                 const pp = ck.split(/pt_pin=(.+?);/)[1];
-                const write = $.write(ck, pp)
-                $.notify(`京东 Cookie`, ``, `写入京东账号[${pp}] Cookie${write ? `成功 🎉` : `失败 ‼️`}`)
+                const write = $.write(ck, pp);
+                $.notify(`京东 Cookie`, ``, `写入京东账号[${pp}] Cookie${write ? `成功 🎉` : `失败 ‼️`}`);
             } else {
                 $.log(cookiesItems)
                 throw new Error("写入Cookie失败, 关键值缺失，可能原因: 非网页获取 ‼️");
@@ -52,5 +55,5 @@ function GetCookie() {
 }
 
 function formatArgument(s) {
-    return Object.fromEntries(s.split('&').map(item => item.split('=')))
+    return Object.fromEntries(s.split('&').map(item => item.split('=')));
 }

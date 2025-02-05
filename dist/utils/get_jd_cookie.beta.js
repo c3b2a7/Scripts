@@ -398,7 +398,10 @@ $.debug = Number(args.debug) || ($.read('Debug') === 'true'); //Debug模式, 1: 
 $.DeleteCookie = Number(args.deleteCookie) || ($.read('DeleteCookie') === 'true'); //是否清除所有Cookie, 1: 开启; 0: 关闭.
 
 runs()
-    .catch(e => $.error(e.error || e.message || e))
+    .catch(e => {
+        $.error(e.error || e.message || e);
+        $.notify(`京东 Cookie`, ``, e.message || JSON.stringify(e));
+    })
     .finally(() => $.done());
 
 async function runs() {
@@ -407,7 +410,7 @@ async function runs() {
     } else if ($.env.isRequest) {
         GetCookie();
     } else {
-        throw new Error('脚本终止, 未获取Cookie ‼️')
+        throw new Error('脚本终止, 未获取Cookie ‼️');
     }
 }
 
@@ -441,5 +444,5 @@ function GetCookie() {
 }
 
 function formatArgument(s) {
-    return Object.fromEntries(s.split('&').map(item => item.split('=')))
+    return Object.fromEntries(s.split('&').map(item => item.split('=')));
 }
